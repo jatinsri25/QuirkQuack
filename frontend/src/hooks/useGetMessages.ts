@@ -1,22 +1,33 @@
-import { useEffect, useState } from "react";
-import useConversation from "../zustand/useConversation";
+import { useState, useEffect } from "react";
+import { useAuthContext } from "../context/AuthContext";
 import toast from "react-hot-toast";
 
-const useGetMessages = () => {
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5001";
+
+const useGetMessages = (selectedConversationId: string) => {
 	const [loading, setLoading] = useState(false);
-	const { messages, setMessages, selectedConversation } = useConversation();
+	const [messages, setMessages] = useState([]);
+	const { authUser } = useAuthContext();
 
 	useEffect(() => {
 		const getMessages = async () => {
-			if (!selectedConversation) return;
+			if (!authUser?._id || !selectedConversationId) return;
+
 			setLoading(true);
-			setMessages([]);
 			try {
-				const res = await fetch(`/api/messages/${selectedConversation.id}`);
+				const res = await fetch(`${API_BASE_URL}/api/messages/${selectedConversationId}`, {
+					credentials: "include"
+				});
+
+				if (!res.ok) {
+					const error = await res.json();
+					throw new Error(error.error || "Failed to fetch messages");
+				}
+
 				const data = await res.json();
-				if (!res.ok) throw new Error(data.error || "An error occurred");
 				setMessages(data);
 			} catch (error: any) {
+				console.error("Error in getMessages: ", error.message);
 				toast.error(error.message);
 			} finally {
 				setLoading(false);
@@ -24,8 +35,9 @@ const useGetMessages = () => {
 		};
 
 		getMessages();
-	}, [selectedConversation, setMessages]);
+	}, [selectedConversationId, authUser?._id]);
 
-	return { messages, loading };
+	return { messages, loading, setMessages };
 };
+
 export default useGetMessages;

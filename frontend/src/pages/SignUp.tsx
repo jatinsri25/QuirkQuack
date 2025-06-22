@@ -24,33 +24,33 @@ const SignUp = () => {
 
 	return (
 		<div className='flex flex-col items-center justify-center min-w-96 mx-auto'>
-		<div className='w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0 text-white-500'>
-				<h1 className='text-3xl font-semibold text-center text-gray-300'>
-					<span>Sign Up</span>
+			<div className='w-full p-6 rounded-lg shadow-md bg-gray-800 bg-opacity-50 backdrop-blur-lg'>
+				<h1 className='text-3xl font-semibold text-center text-white'>
+					Sign Up
 				</h1>
 
 				<form onSubmit={handleSubmitForm}>
 					<div>
 						<label className='label p-2'>
-							<span className='text-base label-text'>Full Name</span>
+							<span className='text-base label-text text-white'>Full Name</span>
 						</label>
 						<input
 							type='text'
 							placeholder='John Doe'
-							className='w-full input input-bordered  h-10'
+							className='w-full input input-bordered h-10 bg-gray-700 text-white placeholder-gray-400'
 							value={inputs.fullName}
 							onChange={(e) => setInputs({ ...inputs, fullName: e.target.value })}
 						/>
 					</div>
 
 					<div>
-						<label className='label p-2 '>
-							<span className='text-base label-text'>Username</span>
+						<label className='label p-2'>
+							<span className='text-base label-text text-white'>Username</span>
 						</label>
 						<input
 							type='text'
 							placeholder='johndoe'
-							className='w-full input input-bordered h-10'
+							className='w-full input input-bordered h-10 bg-gray-700 text-white placeholder-gray-400'
 							value={inputs.username}
 							onChange={(e) => setInputs({ ...inputs, username: e.target.value })}
 						/>
@@ -58,12 +58,12 @@ const SignUp = () => {
 
 					<div>
 						<label className='label'>
-							<span className='text-base label-text'>Password</span>
+							<span className='text-base label-text text-white'>Password</span>
 						</label>
 						<input
 							type='password'
 							placeholder='Enter Password'
-							className='w-full input input-bordered h-10'
+							className='w-full input input-bordered h-10 bg-gray-700 text-white placeholder-gray-400'
 							value={inputs.password}
 							onChange={(e) => setInputs({ ...inputs, password: e.target.value })}
 						/>
@@ -71,28 +71,28 @@ const SignUp = () => {
 
 					<div>
 						<label className='label'>
-							<span className='text-base label-text'>Confirm Password</span>
+							<span className='text-base label-text text-white'>Confirm Password</span>
 						</label>
 						<input
 							type='password'
 							placeholder='Confirm Password'
-							className='w-full input input-bordered h-10'
+							className='w-full input input-bordered h-10 bg-gray-700 text-white placeholder-gray-400'
 							value={inputs.confirmPassword}
 							onChange={(e) => setInputs({ ...inputs, confirmPassword: e.target.value })}
 						/>
 					</div>
 
-					<GenderCheckbox selectedGender={inputs.gender} onCheckboxChange={handleCheckboxChange} />
+					<GenderCheckbox onCheckboxChange={handleCheckboxChange} selectedGender={inputs.gender} />
 
 					<Link
 						to={"/login"}
-						className='text-sm hover:underline hover:text-blue-600 mt-2 inline-block text-white'
+						className='text-sm hover:underline hover:text-blue-400 mt-2 inline-block text-white'
 					>
 						Already have an account?
 					</Link>
 
 					<div>
-						<button className='btn btn-block btn-sm mt-2 border border-slate-700' disabled={loading}>
+						<button className='btn btn-block btn-sm mt-2 bg-blue-600 hover:bg-blue-700 text-white' disabled={loading}>
 							{loading ? "Loading..." : "Sign Up"}
 						</button>
 					</div>

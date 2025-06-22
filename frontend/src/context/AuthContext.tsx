@@ -1,6 +1,8 @@
 import { Dispatch, ReactNode, SetStateAction, createContext, useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5001";
+
 type AuthUserType = {
 	id: string;
 	fullName: string;
@@ -15,7 +17,7 @@ const AuthContext = createContext<{
 	isLoading: boolean;
 }>({
 	authUser: null,
-	setAuthUser: () => {},
+	setAuthUser: () => { },
 	isLoading: true,
 });
 
@@ -32,9 +34,9 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 	useEffect(() => {
 		const fetchAuthUser = async () => {
 			try {
-				const res = await fetch("/api/auth/me", {
-  credentials: "include",
-});
+				const res = await fetch(`${API_BASE_URL}/api/auth/me`, {
+					credentials: "include",
+				});
 
 				const data = await res.json();
 				if (!res.ok) {

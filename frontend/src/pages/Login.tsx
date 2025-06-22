@@ -17,20 +17,20 @@ const Login = () => {
 
 	return (
 		<div className='flex flex-col items-center justify-center min-w-96 mx-auto'>
-			<div className='w-full p-6 rounded-lg shadow-md bg-black bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0'>
+			<div className='w-full p-6 rounded-lg shadow-md bg-gray-800 bg-opacity-50 backdrop-blur-lg'>
 				<h1 className='text-3xl font-semibold text-center text-white'>
 					Login
 				</h1>
 
 				<form onSubmit={handleSubmitForm}>
 					<div>
-						<label className='label p-2 '>
-							<span className='text-base label-text'>Username</span>
+						<label className='label p-2'>
+							<span className='text-base label-text text-white'>Username</span>
 						</label>
 						<input
 							type='text'
 							placeholder='Enter username'
-							className='w-full input input-bordered h-10'
+							className='w-full input input-bordered h-10 bg-gray-700 text-white placeholder-gray-400'
 							value={inputs.username}
 							onChange={(e) => setInputs({ ...inputs, username: e.target.value })}
 						/>
@@ -38,25 +38,25 @@ const Login = () => {
 
 					<div>
 						<label className='label'>
-							<span className='text-base label-text'>Password</span>
+							<span className='text-base label-text text-white'>Password</span>
 						</label>
 						<input
 							type='password'
 							placeholder='Enter Password'
-							className='w-full input input-bordered h-10'
+							className='w-full input input-bordered h-10 bg-gray-700 text-white placeholder-gray-400'
 							value={inputs.password}
 							onChange={(e) => setInputs({ ...inputs, password: e.target.value })}
 						/>
 					</div>
 					<Link
 						to='/signup'
-						className='text-sm  hover:underline text-white hover:text-blue-600 mt-2 inline-block'
+						className='text-sm hover:underline text-white hover:text-blue-400 mt-2 inline-block'
 					>
 						{"Don't"} have an account?
 					</Link>
 
 					<div>
-						<button className='btn btn-block btn-sm mt-2' disabled={loading}>
+						<button className='btn btn-block btn-sm mt-2 bg-blue-600 hover:bg-blue-700 text-white' disabled={loading}>
 							{loading ? "Loading..." : "Login"}
 						</button>
 					</div>

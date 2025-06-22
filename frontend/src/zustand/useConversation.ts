@@ -1,10 +1,10 @@
 import { create } from "zustand";
 
-// export type ConversationType = {
-// 	id: string;
-// 	fullName: string;
-// 	profilePic: string;
-// };
+export type ConversationType = {
+	id: string;
+	fullName: string;
+	profilePic: string;
+};
 
 export type MessageType = {
 	id: string;

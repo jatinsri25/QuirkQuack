@@ -125,13 +125,14 @@ quirkquack/
 - `GET /api/messages/:id` - Get messages for a conversation
 - `GET /api/users` - Get users for sidebar
 
-## Contributing
+## Development
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+This project is actively maintained by Jatin Srivastava. If you find any bugs or have suggestions for improvements, please:
+
+1. Open an issue to discuss the problem or feature
+2. Fork the repository and create a feature branch
+3. Make your changes
+4. Submit a pull request
 
 ## Acknowledgments
 
@@ -140,4 +141,9 @@ quirkquack/
 - [Prisma](https://www.prisma.io/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Zustand](https://github.com/pmndrs/zustand)
+
+## Author
+
+Jatin Srivastava
+- GitHub: [@jatinsri25](https://github.com/jatinsri25)
 

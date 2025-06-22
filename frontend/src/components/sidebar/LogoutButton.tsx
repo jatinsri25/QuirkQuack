@@ -2,12 +2,18 @@ import { LogOut } from "lucide-react";
 import useLogout from "../../hooks/useLogout";
 
 const LogoutButton = () => {
-	const { logout } = useLogout();
+	const { loading, logout } = useLogout();
 
 	return (
-		<div className='mt-auto'>
-			<LogOut className='w-6 h-6 text-white cursor-pointer' onClick={logout} />
-		</div>
+		<button
+			onClick={logout}
+			disabled={loading}
+			className="w-full flex items-center justify-center gap-2 p-2 rounded-lg hover:bg-gray-700 transition-colors"
+		>
+			<LogOut className="w-5 h-5" />
+			<span>{loading ? "Logging out..." : "Logout"}</span>
+		</button>
 	);
 };
+
 export default LogoutButton;
